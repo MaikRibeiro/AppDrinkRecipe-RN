@@ -16,13 +16,13 @@ export const useDrinks = () => {
 
             const data = await response.json();
             if (!data.drinks || data.drinks.length === 0) {
-                setError("Sorry, no drinks found. Try again.");
+                setError("OPS, no drinks found. Try again.");
                 return;
             }
 
             setDrinks(data.drinks);
         } catch (error) {
-            setError("Unexpected error on drinking search, try again later.");
+            setError("OOH NOO! Unexpected error on drinking search, try again later.");
         }
     };
 

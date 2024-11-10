@@ -10,7 +10,7 @@ export type Drink = {
     strGlass: string;
     strInstructions: string;
     [key: `strIngredient${number}`]: string | null;
-    [key: `strMeasure1${number}`]: string | null;
+    [key: `strMeasure${number}`]: string | null;
     'strInstructionsZH-HANS': null;
     'strInstructionsZH-HANT': null;
     strDrinkThumb: string;

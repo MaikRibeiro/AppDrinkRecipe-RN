@@ -1,17 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Drink } from "../types";
 
-const  useDrinksById = () => {
+export const  useDrinksById = (drinkId: string) => {
     const [drink, setDrink] = useState<Drink>();
-    const fetchData = async (drinkId: string) => {
-        try {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState("");
 
-            const response = await fetch (
-                `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?=${drinkId}`
-            );
+    useEffect(()=> {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch (
+                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`
+                );
 
+                const data = await response.json();
+                setDrink(data.drinks[0]);
+            } catch(error) {
+                setError("OOPS! Error to fetch drink details, try again later.")
+            } finally {
+                setLoading(false);
+            }
+        };
 
-            const data = await response.json();
-        } catch(error) {}
-    };
+        fetchData();
+    }, []);
+
+    return { drink, loading, error };
 };
