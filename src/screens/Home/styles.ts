@@ -17,6 +17,13 @@ export const styles = StyleSheet.create({
         position: "absolute",
         right: 35,
     },
+    errorMessage: {
+        color: "red",
+        fontWeight: "bold",
+        fontSize: 16,
+        textAlign: "center",
+        paddingTop: 12,
+    },
     drinkItemContainer: {
         flexDirection: "row",
         alignItems: "center",

@@ -1,4 +1,4 @@
-type Drink = {
+export type Drink = {
     idDrink: string;
     strDrink: string;
     strDrinkAlternate: null;

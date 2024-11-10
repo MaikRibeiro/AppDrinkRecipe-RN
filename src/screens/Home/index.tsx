@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
+import { useDrinks } from "../../hooks/useHooks";
 
 type HomeProps = {
     navigation: NavigationProp<StackParamList>;
@@ -12,30 +13,12 @@ type HomeProps = {
 
 export const Home = ({ navigation }: HomeProps) => {
     const [searchText, setSearchText] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
 
-    const [drinks, setDrinks] = useState<Drink[]>([]);
-
-    const fetchData = async () => {
-        if (searchText.length === 0)
-            return;
-
-        try {
-            const response = await fetch(
-                `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchText}`
-            );
-
-            const data = await response.json();
-            setDrinks(data.drinks);
-        } catch (error) {
-            setErrorMessage("Error on drinking search, try again later." + error);
-        }
-    }
+    const { fetchDrinks, clear, drinks, error } = useDrinks();
 
     const clearSearchText = () => {
         setSearchText("");
-        setDrinks([]);
-        setErrorMessage("");
+        clear();
     };
 
     return (
@@ -52,10 +35,12 @@ export const Home = ({ navigation }: HomeProps) => {
                         <Ionicons name="close-circle-outline" size={24} />
                     </Pressable>
                 )}
-                <Pressable onPress={fetchData}>
+                <Pressable onPress={() => fetchDrinks(searchText)}>
                     <Ionicons name="search" size={24} />
                 </Pressable>
             </View>
+
+            {error && <Text style={styles.errorMessage}> {error} </Text> }
 
             <FlatList
                 data={drinks}
