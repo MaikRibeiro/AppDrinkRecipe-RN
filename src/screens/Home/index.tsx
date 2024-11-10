@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
-import { useDrinks } from "../../hooks/useHooks";
+import { useDrinks } from "../../hooks/useDrinks";
 
 type HomeProps = {
     navigation: NavigationProp<StackParamList>;
@@ -19,6 +19,12 @@ export const Home = ({ navigation }: HomeProps) => {
     const clearSearchText = () => {
         setSearchText("");
         clear();
+    };
+
+    const handleItemClick = (idDrink: string) => {
+        navigation.navigate("Details", {
+            drinkId: idDrink,
+        });
     };
 
     return (
@@ -46,7 +52,9 @@ export const Home = ({ navigation }: HomeProps) => {
                 data={drinks}
                 keyExtractor={item => item.idDrink}
                 renderItem={({item}) => (
-                    <TouchableOpacity style={styles.drinkItemContainer}>
+                    <TouchableOpacity 
+                        style={styles.drinkItemContainer} 
+                        onPress={ ()=> handleItemClick(item.idDrink)}>
                         <Image 
                             source={{ uri: item.strDrinkThumb }} 
                             style={styles.drinkThumb}

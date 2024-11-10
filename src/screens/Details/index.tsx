@@ -1,9 +1,19 @@
+import { RouteProp } from "@react-navigation/native";
 import { Text, View } from "react-native"
 
-export const Details = () => {
+type DetailsScreenRoutesProps = RouteProp<
+    { Details: { drinkId: string}},
+    "Details"
+>;
+
+interface DetailsProp {
+    route: DetailsScreenRoutesProps;
+};
+
+export const Details: React.FC<DetailsProp> = ({ route }) => {
     return (
         <View>
-            <Text>Meu Details</Text>
+            <Text>{route.params.drinkId}</Text>
         </View>
     );
 };

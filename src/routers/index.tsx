@@ -5,7 +5,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export type StackParamList = {
     Home: undefined;
-    Details: undefined;
+    Details: {
+        drinkId: string;
+    };
 };
 
 const Stack = createStackNavigator<StackParamList>();
