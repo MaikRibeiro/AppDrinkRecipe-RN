@@ -39,7 +39,7 @@ export const Details: React.FC<DetailsProp> = ({ route }) => {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.drinkTitle}>{drink?.strDrink}</Text>
-            <Image 
+            <Image
                 source={{ uri: drink?.strDrinkThumb }}
                 style={styles.headerImage}
             />
