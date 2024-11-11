@@ -1,10 +1,27 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    containerEmptyList: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    textEmptyComponent: {
+        color: "#AAB",
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+    indicator: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",
-        paddingHorizontal: 4,
+        paddingHorizontal: 15,
+        backgroundColor: "black",
+        paddingVertical: 12,
     },
     textInput: {
         borderWidth: 0.5,
@@ -12,10 +29,23 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         borderColor: "gray",
         flex: 1,
+        height: 45,
+        color: "#FFF",
     },
-    clearButton: {
+    iconSearchBtn: {
+        width: 35,
+        marginLeft: 15,
+    },
+    iconSearch: {
+        color: "#FFF",
+    },
+    iconClearBtn: {
         position: "absolute",
-        right: 35,
+        right: 75,
+        color: "red",
+    },
+    iconClose: {
+        color: "red",
     },
     errorMessage: {
         color: "red",
@@ -31,6 +61,8 @@ export const styles = StyleSheet.create({
         padding: 10,
         margin: 4,
         gap: 4,
+        borderBottomWidth: 2,
+        borderColor: "#DDD",
     },
     drinkThumb: {
         width: 60,
