@@ -10,4 +10,4 @@ This is a mobile app built with **React Native** that allows users to search for
 
 ---
 
-Feel free to suggest any updates or improvements!
+Feel free to suggest any updates!
